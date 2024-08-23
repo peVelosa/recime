@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "id": "1e3a8e40-8c9d-4c58-b401-4b6f235dc2d2",
+      "name": "Beef Burger",
+      "difficulty": "easy",
+      "position": 5
+    },
+    {
+      "id": "3f7d9132-4c62-4cb6-a5c2-f11b080a43c6",
+      "name": "Chicken Burger",
+      "difficulty": "easy",
+      "position": 8
+    },
+    {
+      "id": "de8a245f-7c21-4c4e-bec1-0f02de12a646",
+      "name": "Beef Burger",
+      "difficulty": "easy",
+      "position": 2
+    },
+    {
+      "id": "3b4a2d4a-1b5a-45c4-9985-11e7b0aabb77",
+      "name": "Chicken Burger",
+      "difficulty": "easy",
+      "position": 7
+    },
+    {
+      "id": "aa9c4a5e-d7f8-48f7-973b-678c5394671d",
+      "name": "Vegan Burger",
+      "difficulty": "medium",
+      "position": 1
+    },
+    {
+      "id": "82c5a59b-22e5-4dd1-9f9f-4a8c98ef732e",
+      "name": "Breakfast Burger",
+      "difficulty": "medium",
+      "position": 4
+    },
+    {
+      "id": "14e1dbf4-d2fc-4d29-97a2-15beabf98d3c",
+      "name": "Chicken Burger",
+      "difficulty": "hard",
+      "position": 6
+    },
+    {
+      "id": "8c5a6adf-d125-4e15-9d27-63f7631dc5a1",
+      "name": "Beef Burger",
+      "difficulty": "hard",
+      "position": 3
+    }
+  ]
+}
