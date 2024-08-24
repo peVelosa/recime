@@ -1,11 +1,10 @@
-"use client";
+import { HomeTemplate } from "@/templates";
+import type { Metadata } from "next";
 
-import HomeTemplate from "@/templates/home";
-// import { Metadata } from "next";
-
-// export const metadata: Metadata = {
-//   title: "ReciMe",
-// };
+export const metadata: Metadata = {
+  title: "ReciMe",
+  description: "ReciMe is a recipe sharing platform.",
+};
 
 export default function Home() {
   return <HomeTemplate />;

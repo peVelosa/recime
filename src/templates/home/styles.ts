@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import * as S from "@/styles/shared/shared-styles";
-import Button from "@/components/button";
+import { motion } from "framer-motion";
+import { Button } from "@/components";
 
 export const Main = styled(S.MaxWidthContainer)``;
 
@@ -20,7 +21,7 @@ export const DifficultyButton = styled(Button)<{
   $isSelected: boolean;
   $edge?: "first" | "last";
 }>`
-  border: 5px solid;
+  border: 1px solid;
   border-color: ${({ theme, $isSelected }) =>
     $isSelected ? theme.blue : theme.gray};
   ${({ $edge }) => {
@@ -42,7 +43,7 @@ export const DifficultyButton = styled(Button)<{
   }
 `;
 
-export const CardsWrapper = styled.section`
+export const CardsWrapper = styled(motion.section)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   row-gap: 2rem;
@@ -65,13 +66,4 @@ export const Subtitle = styled.h3`
 export const Description = styled.p`
   color: ${({ theme }) => theme.gray};
   font-size: 0.8rem;
-`;
-
-export const AnimationCardWrapper = styled.div`
-  overflow: hidden;
-`;
-
-export const AnimationCard = styled.div`
-  transform: translateY(-200px) translateX(-20px);
-  opacity: 0.5;
 `;

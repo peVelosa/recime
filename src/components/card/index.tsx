@@ -2,7 +2,7 @@ import * as S from "./styles";
 import Image from "next/image";
 import type { CardProps } from "./props";
 
-const Card = ({
+export const Card = ({
   name,
   difficulty,
   isHighlight = false,
@@ -13,9 +13,15 @@ const Card = ({
       <Image
         src={imageUrl}
         alt={"Image for " + name + " recipe"}
-        width={200}
-        height={200}
-        style={{ objectFit: "cover", width: "100%", maxHeight: "100%" }}
+        width={0}
+        height={0}
+        sizes="100vw"
+        style={{
+          objectFit: "cover",
+          width: "100%",
+          maxHeight: "200px",
+          height: "100%",
+        }}
         priority
       />
       <S.Content>
@@ -25,5 +31,3 @@ const Card = ({
     </S.Card>
   );
 };
-
-export default Card;

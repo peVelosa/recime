@@ -1,11 +1,17 @@
 import * as S from "./styles";
 
-const Spinner = () => {
+export const Spinner = () => {
   return (
     <S.SpinnerWrapper>
-      <S.Spinner $size={50} />
+      <S.Spinner
+        $size={50}
+        animate={{ rotate: 360 }}
+        transition={{
+          duration: 1,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      />
     </S.SpinnerWrapper>
   );
 };
-
-export default Spinner;

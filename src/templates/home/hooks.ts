@@ -16,18 +16,23 @@ export const useHooks = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleDifficultyChange = (value: Difficulty) => {
-    if (difficulty === value) return;
-    setDifficulty(value);
+    const newDifficulty = value === difficulty ? null : value;
+    setDifficulty(newDifficulty);
+
     setData((old) => [
-      ...old.filter((recipe) => recipe.difficulty === value),
-      ...old.filter((recipe) => recipe.difficulty !== value),
+      ...old
+        .filter((recipe) => recipe.difficulty === newDifficulty)
+        .toSorted((a, b) => a.position - b.position),
+      ...old
+        .filter((recipe) => recipe.difficulty !== newDifficulty)
+        .toSorted((a, b) => a.position - b.position),
     ]);
   };
 
   const fetchData = useCallback(async () => {
     setIsLoading(true);
     const response = await fetch("/api/recipes");
-    // await wait(2000);
+    await wait(2000);
     const data = (await response.json()) as Recipe[];
 
     const sortedData = data.toSorted((a, b) => a.position - b.position);

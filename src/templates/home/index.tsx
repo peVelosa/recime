@@ -1,18 +1,14 @@
+"use client";
+
 import { useHooks } from "./hooks";
-import Card from "@/components/card";
 import C from "./constants";
 import * as S from "./styles";
 import { capitalize } from "@/helpers";
-import { useAnimations } from "./animations";
-import Spinner from "@/components/spinner";
+import { motion } from "framer-motion";
+import { Card, Spinner } from "@/components";
 
-const HomeTemplate = () => {
+export const HomeTemplate = () => {
   const { difficulty, handleDifficultyChange, data, isLoading } = useHooks();
-
-  const { containerRef } = useAnimations({
-    isLoading,
-    difficulty,
-  });
 
   return (
     <>
@@ -34,6 +30,7 @@ const HomeTemplate = () => {
                     ? "last"
                     : undefined
                 }
+                disabled={isLoading}
               >
                 {capitalize(option)}
               </S.DifficultyButton>
@@ -43,17 +40,20 @@ const HomeTemplate = () => {
         {isLoading ? (
           <Spinner />
         ) : (
-          <S.CardsWrapper ref={containerRef}>
+          <S.CardsWrapper
+            initial={C.animation.cardsWrapper.initial}
+            animate={C.animation.cardsWrapper.animate}
+            variants={C.animation.cardsWrapper.variants}
+          >
             {data.map((recipe) => (
-              <S.AnimationCardWrapper key={recipe.id}>
-                <S.AnimationCard className="target-card">
-                  <Card
-                    name={recipe.name}
-                    difficulty={recipe.difficulty}
-                    isHighlight={difficulty === recipe.difficulty}
-                  />
-                </S.AnimationCard>
-              </S.AnimationCardWrapper>
+              <motion.div key={recipe.id} layout variants={C.animation.card}>
+                <Card
+                  name={recipe.name}
+                  difficulty={recipe.difficulty}
+                  isHighlight={difficulty === recipe.difficulty}
+                />
+                {recipe.position}
+              </motion.div>
             ))}
           </S.CardsWrapper>
         )}
@@ -61,5 +61,3 @@ const HomeTemplate = () => {
     </>
   );
 };
-
-export default HomeTemplate;

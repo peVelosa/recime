@@ -1,7 +1,7 @@
 import * as S from "./styles";
 import C from "./constants";
 
-const Navbar = () => {
+export const Navbar = () => {
   return (
     <S.Header>
       <S.Nav>
@@ -10,5 +10,3 @@ const Navbar = () => {
     </S.Header>
   );
 };
-
-export default Navbar;
