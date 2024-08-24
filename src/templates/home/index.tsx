@@ -52,7 +52,6 @@ export const HomeTemplate = () => {
                   difficulty={recipe.difficulty}
                   isHighlight={difficulty === recipe.difficulty}
                 />
-                {recipe.position}
               </motion.div>
             ))}
           </S.CardsWrapper>
