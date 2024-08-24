@@ -1,7 +1,8 @@
+import { Difficulty } from "@/templates/home/hooks";
+
 export type CardProps = {
   name: string;
-  difficulty: string;
+  difficulty: Difficulty;
   isHighlight?: boolean;
-  isLoading?: boolean;
   imageUrl?: string;
 };

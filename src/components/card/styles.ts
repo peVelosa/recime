@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const Card = styled.div<{ $isHighlight: boolean }>`
   border: 2px solid
@@ -6,26 +6,6 @@ export const Card = styled.div<{ $isHighlight: boolean }>`
   border-radius: 1rem;
   overflow: hidden;
 `;
-
-export const SkeletonAnimation = keyframes`
-  from {
-    opacity: 0.5;
-  }
-  to {
-    opacity: 1;
-  }
-`;
-
-export const Skeleton = styled.div`
-  border: 1px solid ${({ theme }) => theme.black};
-  border-radius: 1rem;
-  overflow: hidden;
-  min-height: 200px;
-  min-width: 150px;
-  background-color: ${({ theme }) => theme.gray};
-  animation: ${SkeletonAnimation} 1s linear infinite alternate;
-`;
-
 export const Content = styled.div`
   padding: 1rem;
 `;

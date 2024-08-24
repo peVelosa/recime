@@ -19,6 +19,7 @@ export const CardsWrapper = styled.section`
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   row-gap: 2rem;
   column-gap: 1rem;
+  overflow: hidden;
 `;
 
 export const Title = styled.h2`
@@ -36,4 +37,13 @@ export const Subtitle = styled.h3`
 export const Description = styled.p`
   color: ${({ theme }) => theme.gray};
   font-size: 0.8rem;
+`;
+
+export const AnimationCardWrapper = styled.div`
+  overflow: hidden;
+`;
+
+export const AnimationCard = styled.div`
+  transform: translateY(-200px) translateX(-20px);
+  opacity: 0.5;
 `;

@@ -4,9 +4,16 @@ import Card from "@/components/card";
 import C from "./constants";
 import * as S from "./styles";
 import { capitalize } from "@/helpers";
+import { useAnimations } from "./animations";
+import Spinner from "@/components/spinner";
 
 const HomeTemplate = () => {
   const { difficulty, handleDifficultyChange, data, isLoading } = useHooks();
+
+  const { containerRef } = useAnimations({
+    isLoading,
+    difficulty,
+  });
 
   return (
     <>
@@ -34,24 +41,23 @@ const HomeTemplate = () => {
             ))}
           </S.ButtonsWrapper>
         </S.TitleWrapper>
-        <S.CardsWrapper>
-          {isLoading ? (
-            Array.from({ length: 6 }).map((_, index) => (
-              <Card isLoading={true} name={""} difficulty="" key={index} />
-            ))
-          ) : (
-            <>
-              {data.map((recipe) => (
-                <Card
-                  key={recipe.id}
-                  name={recipe.name}
-                  difficulty={recipe.difficulty}
-                  isHighlight={difficulty === recipe.difficulty}
-                />
-              ))}
-            </>
-          )}
-        </S.CardsWrapper>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <S.CardsWrapper ref={containerRef}>
+            {data.map((recipe) => (
+              <S.AnimationCardWrapper key={recipe.id}>
+                <S.AnimationCard className="target-card">
+                  <Card
+                    name={recipe.name}
+                    difficulty={recipe.difficulty}
+                    isHighlight={difficulty === recipe.difficulty}
+                  />
+                </S.AnimationCard>
+              </S.AnimationCardWrapper>
+            ))}
+          </S.CardsWrapper>
+        )}
       </S.Main>
     </>
   );

@@ -1,21 +1,22 @@
 import { useCallback, useEffect, useState } from "react";
 
-type Difficult = "easy" | "medium" | "hard";
+export type Difficulty = "easy" | "medium" | "hard" | null;
 type Recipe = {
   id: number;
   name: string;
-  difficulty: Difficult;
+  difficulty: Difficulty;
   position: number;
 };
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const useHooks = () => {
-  const [difficulty, setDifficulty] = useState<string | null>(null);
+  const [difficulty, setDifficulty] = useState<Difficulty>(null);
   const [data, setData] = useState<Recipe[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleDifficultyChange = (value: string) => {
+  const handleDifficultyChange = (value: Difficulty) => {
+    if (difficulty === value) return;
     setDifficulty(value);
     setData((old) => [
       ...old.filter((recipe) => recipe.difficulty === value),
@@ -26,7 +27,7 @@ export const useHooks = () => {
   const fetchData = useCallback(async () => {
     setIsLoading(true);
     const response = await fetch("/api/recipes");
-    await wait(2000);
+    // await wait(2000);
     const data = (await response.json()) as Recipe[];
 
     const sortedData = data.toSorted((a, b) => a.position - b.position);

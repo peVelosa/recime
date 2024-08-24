@@ -5,14 +5,9 @@ import type { CardProps } from "./props";
 const Card = ({
   name,
   difficulty,
-  isLoading,
   isHighlight = false,
   imageUrl = "https://ddg0cip9uom1w.cloudfront.net/code-challenge/burger.jpg",
 }: CardProps) => {
-  if (isLoading) {
-    return <S.Skeleton></S.Skeleton>;
-  }
-
   return (
     <S.Card $isHighlight={isHighlight}>
       <Image
