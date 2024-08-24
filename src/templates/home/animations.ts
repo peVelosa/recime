@@ -1,8 +1,8 @@
 import { useGSAP } from "@gsap/react";
 import { type ElementRef, useCallback, useRef, useState } from "react";
 import gsap from "gsap";
-import type { Difficulty } from "./hooks";
 import C from "./constants";
+import type { Difficulty } from "./hooks";
 
 export const useAnimations = ({
   isLoading,
@@ -57,14 +57,13 @@ export const useAnimations = ({
   useGSAP(
     () => {
       if (isLoading || !containerRef.current) return;
-      if (mappedElements.initial.length === 0) {
-        const elements = getElements();
-        if (elements.length === 0) return;
-        mapElements(elements);
-        handleInitialAnimation(elements);
-        return;
-      }
-      handleInitialAnimation(mappedElements.initial!);
+      if (mappedElements.initial.length !== 0)
+        return handleInitialAnimation(mappedElements.initial);
+      const elements = getElements();
+      if (elements.length === 0) return;
+      mapElements(elements);
+      handleInitialAnimation(elements);
+      return;
     },
     {
       dependencies: [isLoading],
@@ -73,14 +72,12 @@ export const useAnimations = ({
 
   useGSAP(
     () => {
-      if (difficulty === null || mappedElements[difficulty].length === 0) {
-        const elements = getElements();
-        if (elements.length === 0) return;
-        mapElements(elements);
-        handleReorderAnimation(elements);
-        return;
-      }
-      handleReorderAnimation(mappedElements[difficulty!]!);
+      if (difficulty !== null && mappedElements[difficulty].length > 0)
+        return handleReorderAnimation(mappedElements[difficulty]);
+      const elements = getElements();
+      if (elements.length === 0) return;
+      mapElements(elements);
+      handleReorderAnimation(elements);
     },
     {
       dependencies: [difficulty],
