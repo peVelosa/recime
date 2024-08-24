@@ -3,7 +3,7 @@ export default {
   subtitle: "Difficulty",
   description: "You can filter recipes by difficulty.",
   options: ["easy", "medium", "hard"],
-  Animation: {
+  animation: {
     initial: {
       duration: 1,
       stagger: 0.1,

@@ -1,17 +1,10 @@
 import { ButtonProps } from "./props";
 import * as S from "./styles";
 
-const Button = ({
-  children,
-  isSelected = false,
-  edge,
-  ...props
-}: ButtonProps) => {
+const Button = ({ children, ...props }: ButtonProps) => {
   return (
     <>
-      <S.Button $isSelected={isSelected} $edge={edge} {...props}>
-        {children}
-      </S.Button>
+      <S.Button {...props}>{children}</S.Button>
     </>
   );
 };

@@ -23,13 +23,13 @@ export const useAnimations = ({
 
   const handleInitialAnimation = (elements: HTMLElement[]) => {
     gsap.to(elements, {
-      ...C.Animation.initial,
+      ...C.animation.initial,
     });
   };
 
   const handleReorderAnimation = (elements: HTMLElement[]) => {
     gsap.to(elements, {
-      ...C.Animation.reorder,
+      ...C.animation.reorder,
       onComplete: () => handleInitialAnimation(elements),
     });
   };

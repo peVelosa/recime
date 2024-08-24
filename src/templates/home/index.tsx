@@ -1,4 +1,3 @@
-import Button from "@/components/button";
 import { useHooks } from "./hooks";
 import Card from "@/components/card";
 import C from "./constants";
@@ -24,11 +23,11 @@ const HomeTemplate = () => {
           <S.Description>{C.description}</S.Description>
           <S.ButtonsWrapper>
             {C.options.map((option, index) => (
-              <Button
+              <S.DifficultyButton
                 key={option}
                 onClick={() => handleDifficultyChange(option)}
-                isSelected={difficulty === option}
-                edge={
+                $isSelected={difficulty === option}
+                $edge={
                   index === 0
                     ? "first"
                     : index === C.options.length - 1
@@ -37,7 +36,7 @@ const HomeTemplate = () => {
                 }
               >
                 {capitalize(option)}
-              </Button>
+              </S.DifficultyButton>
             ))}
           </S.ButtonsWrapper>
         </S.TitleWrapper>
