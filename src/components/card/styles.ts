@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-export const Card = styled.div<{ $isHighlight: boolean }>`
+export const Card = styled.div<{ $isHighlighted: boolean }>`
   border: 2px solid
-    ${({ theme, $isHighlight }) => ($isHighlight ? theme.blue : theme.black)};
+    ${({ theme, $isHighlighted }) =>
+      $isHighlighted ? theme.blue : theme.black};
   border-radius: 1rem;
   overflow: hidden;
 `;
@@ -10,13 +11,13 @@ export const Content = styled.div`
   padding: 1rem;
 `;
 
-export const Name = styled.p<{ $isHighlight: boolean }>`
+export const Name = styled.p<{ $isHighlighted: boolean }>`
   font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  color: ${({ theme, $isHighlight }) =>
-    $isHighlight ? theme.blue : theme.black};
+  color: ${({ theme, $isHighlighted }) =>
+    $isHighlighted ? theme.blue : theme.black};
 `;
 
 export const Difficulty = styled.p`

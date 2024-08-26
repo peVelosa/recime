@@ -27,8 +27,8 @@ export const HomeTemplate = () => {
                   index === 0
                     ? "first"
                     : index === C.options.length - 1
-                    ? "last"
-                    : undefined
+                      ? "last"
+                      : undefined
                 }
                 disabled={isLoading}
               >
@@ -50,7 +50,7 @@ export const HomeTemplate = () => {
                 <Card
                   name={recipe.name}
                   difficulty={recipe.difficulty}
-                  isHighlight={difficulty === recipe.difficulty}
+                  isHighlighted={difficulty === recipe.difficulty}
                 />
               </motion.div>
             ))}

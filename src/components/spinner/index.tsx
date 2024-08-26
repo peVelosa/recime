@@ -1,10 +1,14 @@
 import * as S from "./styles";
+import type { SpinnerProps } from "./props";
 
-export const Spinner = () => {
+/**
+ * Display a spinner element.
+ */
+export const Spinner = ({ size = 50 }: SpinnerProps) => {
   return (
     <S.SpinnerWrapper>
       <S.Spinner
-        $size={50}
+        $size={size}
         animate={{ rotate: 360 }}
         transition={{
           duration: 1,
