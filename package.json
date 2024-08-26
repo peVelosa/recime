@@ -10,7 +10,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",
-    "test:cov": "jest --coverage"
+    "test:cov": "jest --coverage",
+    "check": "tsc --noEmit"
   },
   "dependencies": {
     "@gsap/react": "^2.1.1",

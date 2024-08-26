@@ -1,4 +1,4 @@
-import { Difficulty } from "@/templates/home/hooks";
+import { Difficulty } from "@/templates/home/service";
 
 export type CardProps = {
   /**

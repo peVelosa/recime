@@ -2,6 +2,8 @@
 
 This project is a simple website developed as part of a technical challenge for Recime. The site uses Next.js, Styled Components, and Framer Motion to create an interactive interface with three buttons that filter and sort images.
 
+[Preview][https://recime.vercel.app/]
+
 ## Table of Contents
 
 - [About](#about)
