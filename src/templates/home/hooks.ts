@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { HomeTemplateProps } from "./props";
 import type { Difficulty, Recipe } from "./service";
 
 export const useHooks = ({ service }: Required<HomeTemplateProps>) => {
+  const serviceRef = useRef(service);
   const [difficulty, setDifficulty] = useState<Difficulty>(null);
   const [data, setData] = useState<Recipe[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -15,7 +16,7 @@ export const useHooks = ({ service }: Required<HomeTemplateProps>) => {
   const fetchData = useCallback(async () => {
     setError(false);
     setIsLoading(true);
-    const { data, error } = await service.getRecipes();
+    const { data, error } = await serviceRef.current.getRecipes();
 
     if (error) {
       setIsLoading(false);
@@ -27,7 +28,7 @@ export const useHooks = ({ service }: Required<HomeTemplateProps>) => {
 
     setData(sortedData);
     setIsLoading(false);
-  }, [service]);
+  }, []);
 
   useEffect(() => {
     fetchData();

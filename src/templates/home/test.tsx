@@ -1,5 +1,5 @@
 import { render, screen, fireEvent, act } from "@testing-library/react";
-import { HomeTemplate } from "./";
+import { HomeTemplate } from ".";
 import C from "./constants";
 import { capitalize } from "@/helpers";
 import type { HomeServiceInterface, Recipe } from "./service";
