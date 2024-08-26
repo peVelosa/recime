@@ -11,6 +11,8 @@ This project is a simple website developed as part of a technical challenge for 
 - [Technologies](#technologies)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Testing](#testing)
+- [Storybook](#storybook)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -58,9 +60,30 @@ To start the project:
 
 2. Open your browser and go to [http://localhost:3000](http://localhost:3000) to view the site in action.
 
-## Contributing
+## Testing
 
-Feel free to contribute to the project by submitting pull requests. If you encounter any issues or have suggestions, please open an issue on GitHub.
+To run tests using Jest:
+
+1. Run all tests:
+    ```bash
+    npm test
+    ```
+
+2. Generate a test coverage report:
+    ```bash
+    npm run test:cov
+    ```
+
+## Storybook
+
+To run Storybook and view your components in isolation:
+
+1. Start Storybook:
+    ```bash
+    npm run storybook
+    ```
+
+2. Open your browser and go to [http://localhost:6006](http://localhost:6006) to explore your components.
 
 ## License
 
