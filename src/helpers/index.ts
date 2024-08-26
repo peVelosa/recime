@@ -3,5 +3,5 @@ export function capitalize(str: string) {
 }
 
 export async function wait(ms: number) {
-  new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
