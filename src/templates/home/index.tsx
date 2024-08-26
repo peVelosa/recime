@@ -5,10 +5,21 @@ import C from "./constants";
 import * as S from "./styles";
 import { capitalize } from "@/helpers";
 import { motion } from "framer-motion";
-import { Card, Spinner } from "@/components";
+import { Button, Card, Spinner } from "@/components";
+import { HomeService } from "./service";
+import type { HomeTemplateProps } from "./props";
 
-export const HomeTemplate = () => {
-  const { difficulty, handleDifficultyChange, data, isLoading } = useHooks();
+export const HomeTemplate = ({
+  service = new HomeService(),
+}: HomeTemplateProps) => {
+  const {
+    difficulty,
+    handleDifficultyChange,
+    data,
+    isLoading,
+    hasError,
+    refetch,
+  } = useHooks({ service });
 
   return (
     <>
@@ -30,6 +41,7 @@ export const HomeTemplate = () => {
                       ? "last"
                       : undefined
                 }
+                data-selected={difficulty === option}
                 disabled={isLoading}
               >
                 {capitalize(option)}
@@ -37,7 +49,12 @@ export const HomeTemplate = () => {
             ))}
           </S.ButtonsWrapper>
         </S.TitleWrapper>
-        {isLoading ? (
+        {hasError ? (
+          <>
+            <p>Something went wrong. Please try again later.</p>
+            <Button onClick={refetch}>Try again</Button>
+          </>
+        ) : isLoading ? (
           <Spinner />
         ) : (
           <S.CardsWrapper
